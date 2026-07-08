@@ -32,7 +32,7 @@ Displayed statistics:
 - Manga Completed
 - Chapters Read
 - Volumes Read
-> **Note:** You can easily change which statistics are displayed by modifying the project.
+> **Note:** You can change which statistics are displayed by modifying the project.
 ---
 
 ## Installation
@@ -58,13 +58,17 @@ Create a Discord application using the Discord Developer Portal.
 
 Follow Chloe Cinders' guide for the Discord widget/application setup:
 
-(https://chloecinders.com/blog/discord-widgets)
+https://chloecinders.com/blog/discord-widgets
 
 Create a **Profile Widget** and note down your:
 
 - Application ID
 - Bot Token
 - User ID
+
+![Discord Widget](images/valuetype.png)
+
+> **Important:** Set **Value Type** to **User Data**, **not Custom String**.
 
 Change `.env.template` file name to `.env` and replace the placeholder values.
 
@@ -92,7 +96,7 @@ Here's what it should look like:
     "expires_at": 0
 }
 ```
-> **Note:** You will get the missing values later.
+> **Note:** The missing values will be provided later in this guide.
 
 ---
 
