@@ -1,17 +1,24 @@
 # MyAnimeList Discord Widget
 
-This repository contains everything you need to set up a **MyAnimeList** Widget on your Discord profile (similar to the "Last.FM" widget).
+This repository provides an unofficial, custom-built solution for displaying a **MyAnimeList** widget on your Discord profile (similar to the "Last.FM" widget).
 
-This project communicates directly with the official MyAnimeList API, calculates statistics locally, and automatically refreshes OAuth tokens whenever necessary.
+Built using Python 3.14.6, this project contains everything you need to deploy your own custom widget. It communicates directly with the official MyAnimeList API, calculates statistics locally, and includes automatic OAuth token refresh handling.
 
+---
+
+## Preview Image
+
+The widget displays six compact stats on a Discord profile:
+![Discord Widget](images/widget.png)
+
+> **Note:** You can easily change the widget's color and image to whatever you want.
 ---
 
 ## Features
 
 - Uses the official MyAnimeList OAuth2 API
 - Automatically refreshes expired access tokens
-- Calculates statistics locally (no Jikan dependency)
-- Supports NSFW entries
+- Calculates statistics locally
 - Updates your Discord Profile Widget automatically
 - Works with Windows Task Scheduler
 - Lightweight and easy to configure
@@ -25,21 +32,6 @@ Displayed statistics:
 - Chapters Read
 - Volumes Read
 > **Note:** You can easily change which statistics are displayed by modifying the project.
----
-
-## Preview
-
-![Discord Widget](images/widget.png)
-
-```
-Anime Completed : 447
-Days Watched    : 119.9
-Mean Score      : 7.4
-Manga Completed : 10
-Chapters Read   : 3834
-Volumes Read    : 138
-```
-
 ---
 
 ## Installation
@@ -59,9 +51,11 @@ pip install -r requirements.txt
 > **Note:** Python 3.10 or newer is not required, but it's recommended to avoid problems.
 ---
 
-## Discord Setup
+## Discord Widget Setup
 
-Create a Discord application using the Discord Developer Portal. [Tutorial](https://chloecinders.com/blog/discord-widgets)
+Create a Discord application using the Discord Developer Portal. 
+Follow Chloe Cinders' guide for the Discord widget/application setup:
+(https://chloecinders.com/blog/discord-widgets)
 
 Create a **Profile Widget** and note down your:
 
@@ -69,7 +63,7 @@ Create a **Profile Widget** and note down your:
 - Bot Token
 - User ID
 
-Create a new file called `.env` in the project root.
+Change `.env.template` file name to `.env` and replace the placeholder values.
 
 Here's what it should look like:
 
@@ -81,6 +75,21 @@ BOT_TOKEN=your_discord_bot_token
 APPLICATION_ID=your_application_id
 USER_ID=your_discord_user_id
 ```
+
+Change `tokens.template.json` file name to `tokens.json`.
+
+Here's what it should look like:
+
+```json
+{
+    "token_type": "Bearer",
+    "access_token": "your_access_token",
+    "refresh_token": "your_refresh_token",
+    "expires_in": 2678400,
+    "expires_at": 0
+}
+```
+> **Note:** You will get the missing values later.
 
 ---
 
@@ -204,19 +213,13 @@ Copy the following values into `tokens.json`:
 - `refresh_token`
 - `expires_in`
 
-Then add:
-
-```json
-"expires_at": 0
-```
-
-The project will automatically update `expires_at` after the first successful token refresh, so you won't need to edit it again.
+The project will automatically update `expires_at` after the first successful token refresh, so you won't need to edit it.
 
 Once this is done, `update.py` will automatically refresh your access token whenever it expires.
 
 ---
 
-## Automatic Updates
+## Automatic Updates With Windows Task Scheduler
 
 Schedule `update.py` using Windows Task Scheduler.
 
@@ -240,7 +243,7 @@ Start in:
 C:\Path\To\MAL-Discord-Widget
 ```
 
-Using **pythonw.exe** prevents a Command Prompt window from appearing whenever the scheduled task runs.
+Using **pythonw.exe** instead of python.exe prevents a Command Prompt window from appearing whenever the scheduled task runs.
 
 ---
 
@@ -259,8 +262,8 @@ MAL-Discord-Widget/
 ├── .gitignore
 ├── README.md
 │
-├── .env            (not committed)
-└── tokens.json     (not committed)
+├── .env.template --> .env
+└── tokens.template.json --> tokens.json
 ```
 
 ---
@@ -285,7 +288,7 @@ MAL-Discord-Widget/
 
 ## Notes
 
-This project intentionally **does not use Jikan**.
+This project intentionally **does not use third party API providers like Jikan**.
 
 Although Jikan is an excellent unofficial API, it may occasionally experience cache delays or temporary outages.
 
@@ -293,15 +296,11 @@ Instead, this project communicates directly with the official MyAnimeList API an
 
 ---
 
-## Special Thanks
+## Credits And Honorable Mentions
 
-This project was originally inspired by Last-FM Widget by vivzio. The original project demonstrated how Discord Profile Widgets could be updated programmatically. This repository adapts that concept for the official MyAnimeList API using a completely different authentication flow and statistics pipeline.
+**Tutorials:** Huge thanks to **Chloe Cinders** for the incredible blog tutorial on custom Discord Widgets, and to **NTTS** for the fantastic video guide based on that post.
 
-Thank you to **vivzio** for creating the original project that inspired this one.
-
-Last.FM project:
-
-https://github.com/vivzio/Last-FM-Widget
+**Inspiration:** Originally inspired by the Last-FM Widget (by vivzio) and wakatime-widget (by Aemeath). These projects demonstrated how Discord Profile Widgets could be updated programmatically. This repository adapts that foundational logic for the official MyAnimeList API, utilizing a completely redesigned authentication flow and statistics pipeline.
 
 ---
 
