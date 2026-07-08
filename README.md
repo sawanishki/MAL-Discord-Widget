@@ -1,15 +1,16 @@
 # MyAnimeList Discord Widget
 
-This repository provides an unofficial, custom-built solution for displaying a **MyAnimeList** widget on your Discord profile (similar to the "Last.FM" widget).
+This repository provides an unofficial, custom-built solution for a **MyAnimeList** widget on your Discord profile (similar to the "Last.FM" widget).
 
-Built using Python 3.14.6, this project contains everything you need to deploy your own custom widget. It communicates directly with the official MyAnimeList API, calculates statistics locally, and includes automatic OAuth token refresh handling.
+Built using Python 3.14.6, this project contains everything you need to make your own custom widget. It communicates directly with the official MyAnimeList API, calculates statistics locally, and includes automatic OAuth token refresh handling.
 
 ---
 
 ## Preview Image
 
 The widget displays six compact stats on a Discord profile:
-![Discord Widget](images/widget.png)
+
+![Discord Widget](images/widgettemplate.png)
 
 > **Note:** You can easily change the widget's color and image to whatever you want.
 ---
@@ -53,8 +54,10 @@ pip install -r requirements.txt
 
 ## Discord Widget Setup
 
-Create a Discord application using the Discord Developer Portal. 
+Create a Discord application using the Discord Developer Portal.
+
 Follow Chloe Cinders' guide for the Discord widget/application setup:
+
 (https://chloecinders.com/blog/discord-widgets)
 
 Create a **Profile Widget** and note down your:
@@ -136,13 +139,13 @@ This creates your local authentication file (`tokens.json`).
 
 Once configured, the application automatically refreshes your access token whenever it expires.
 
-There's 2 methods for authorization and if this didn't work for you I recommend you using the next method.
+There's 2 methods for authorization and if this didn't work for you I recommend using the next method.
 
 ---
 
 ## 2. Method: Authentication Using Postman (Recommended)
 
-### Postman (Recommended)
+### Postman
 
 If you have trouble exchanging the authorization code manually, you can use **Postman** to complete the OAuth flow.
 
@@ -152,7 +155,7 @@ Download and install Postman:
 
 https://www.postman.com/downloads/
 
-You can skip creating an account if prompted. It's also recommended that you don't create an account, since you'll only need Postman once.
+You can skip creating an account if prompted. I recommended that you don't create an account, since you'll only need Postman once.
 
 ---
 
@@ -243,6 +246,8 @@ Start in:
 C:\Path\To\MAL-Discord-Widget
 ```
 
+While you can schedule the task to run every 5 minutes, an hourly interval is usually more than enough. Since new anime releases don't happen frequently enough to justify a 5-minute check, an hourly schedule balances efficiency without missing updates. 
+
 Using **pythonw.exe** instead of python.exe prevents a Command Prompt window from appearing whenever the scheduled task runs.
 
 ---
@@ -288,7 +293,7 @@ MAL-Discord-Widget/
 
 ## Notes
 
-This project intentionally **does not use third party API providers like Jikan**.
+This project intentionally **does not use** third party API providers like Jikan.
 
 Although Jikan is an excellent unofficial API, it may occasionally experience cache delays or temporary outages.
 
