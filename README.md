@@ -1,6 +1,6 @@
 # MyAnimeList Discord Widget
 
-This repository provides an unofficial, custom-built solution for a **MyAnimeList** widget on your Discord profile (similar to the "Last.FM" widget).
+This repository provides an unofficial, custom-built solution for **MyAnimeList** widget on your Discord profile (similar to the "Last.FM" widget).
 
 Built using Python 3.14.6, this project contains everything you need to make your own custom widget. It communicates directly with the official MyAnimeList API, calculates statistics locally, and includes automatic OAuth token refresh handling.
 
@@ -67,8 +67,8 @@ Create a **Profile Widget** and note down your:
 - User ID
 
 ![Discord Widget](images/valuetype.png)
+> **Important:** Make sure your widget's texts' **Value Type** is set to **User Data**, not **Custom String**.
 
-> **Important:** Set **Value Type** to **User Data**, **not Custom String**.
 
 Change `.env.template` file name to `.env` and replace the placeholder values.
 
@@ -143,7 +143,7 @@ This creates your local authentication file (`tokens.json`).
 
 Once configured, the application automatically refreshes your access token whenever it expires.
 
-There's 2 methods for authorization and if this didn't work for you I recommend using the next method.
+There are 2 methods for the authorization and if this method didn't work for you I recommend using the next method.
 
 ---
 
@@ -159,7 +159,7 @@ Download and install Postman:
 
 https://www.postman.com/downloads/
 
-You can skip creating an account if prompted. I recommended that you don't create an account, since you'll only need Postman once.
+You can skip creating an account if prompted. I recommend you not to create an account, since you'll only need Postman once.
 
 ---
 
