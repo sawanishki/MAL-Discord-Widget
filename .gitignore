@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Secrets
+.env
+tokens.json
+
+# Logs
+widget.log
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
